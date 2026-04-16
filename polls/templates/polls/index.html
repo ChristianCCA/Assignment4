@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Django Polls App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            color: white;
+            padding-top: 60px;
+            min-height: 100vh;
+        }
+
+        .box {
+            width: 70%;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 20px 0;
+            font-size: 28px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Welcome to My Customized Django Polls App</h1>
+
+        {% if latest_question_list %}
+            <ul>
+                {% for question in latest_question_list %}
+                    <li>
+                        <a href="{% url 'polls:detail' question.id %}">
+                            {{ question.question_text }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">

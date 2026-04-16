@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            color: white;
+            padding-top: 60px;
+            min-height: 100vh;
+        }
+
+        .box {
+            width: 60%;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Results for: {{ question.question_text }}</h1>
+
+        <ul>
+            {% for choice in question.choice_set.all %}
+                <li>{{ choice.choice_text }} — {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'polls:detail' question.id %}">Vote again</a>
+        <br><br>
+        <a href="{% url 'polls:index' %}">Back to Polls</a>
+    </div>
+</body>
+</html>
