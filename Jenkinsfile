@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         EC2_USER    = "ubuntu"
-        EC2_HOST    = "52.15.124.23"
+        EC2_HOST    = "13.59.150.154"
         CRED_ID     = "ec2-ssh-private-key"
 
         PROJECT_DIR = "/home/ubuntu/pythonprojects/assignment4"
